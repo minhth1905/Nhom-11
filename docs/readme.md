@@ -44,7 +44,9 @@
 - Một điểm đánh dấu ArUco là một điểm đánh dấu tổng hợp hình vuông bao gồm một đường viền rộng màu đen và ma trận nhị phân bên trong màu trắng nhằm xác định số nhận dạng của nó (id). Các đường biên màu đen tạo điều kiện cho việc phát hiện một cách nhanh chóng hình ảnh của nó và mã hóa nhị phân cho phép định vị và áp dụng các kỹ thuật phát hiện và sửa lỗi.
 - Kích thước điểm đánh dấu xác định kích thước của ma trận nội bộ.Ví dụ: một điểm đánh dấu có khích thước là 4x4 được xây dựng bởi ma trận 16 bits.
 - Mã này có thể quay theo nhiều chiều khác nhau trong môi trường, vì vậy, để xác định đúng dữ liệu mà nó truyền tải ta cần phải xác định được độ quay ban đầu của nó, do đó mỗi góc được xác định rõ ràng. Mã hóa nhị phân sẽ giải quyết vấn đề này.
+
 - Hình ảnh về mã:
+
 ![img01](https://docs.opencv.org/3.1.0/markers.jpg)
 
 
