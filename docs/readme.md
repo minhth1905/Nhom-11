@@ -1,13 +1,13 @@
-####BÁO CÁO BÀI TẬP LỚN
-#####MÔN: Các vấn đề hiện đại trong công nghệ thông tin
-#####Giảng viên: Trương Anh Hoàng
+#### BÁO CÁO BÀI TẬP LỚN
+##### MÔN: Các vấn đề hiện đại trong công nghệ thông tin
+##### Giảng viên: Trương Anh Hoàng
 -------------------------------------------------------------
 
-##Đề tài: ỨNG DỤNG TẠO MÃ TỰ ĐỘNG
+## Đề tài: ỨNG DỤNG TẠO MÃ VÀ NHẬN DIỆN MÃ TRÊN THIẾT BỊ DI ĐỘNG
 
 ---
-####I. GIỚI THIỆU CHUNG
-####1. Tổng quan về OpenCV
+#### I. GIỚI THIỆU CHUNG
+#### 1. Tổng quan về OpenCV
 
 - OpenCV (OpenSource Computer Vision) là một thư viện mã nguồn mở. OpenCV được phát hành theo giấy phép BSD, do đó nó hoàn toàn miễn phí cho cả học thuật và thương mại.
 - Thư viện OpenCV cung cấp cho người dùng các cấu trúc dữ liệu, đối tượng và hàm bằng cách khai báo nguyên mẫu (prototype) của chúng trong các tập tin thư viện C/C++ và định nghĩa chi tiết trong các tập tin mã nguồn. Với mức độ sử dụng OpenCV, ta chỉ cần giải nén các tập tin đã được biên dịch sẵn rồi thực hiện các thao tác cài đặt đường dẫn cho thích hợp để hệ điều hành tìm đến đúng vị trí của các tập tin thư viện. Ở mức độ cao hơn, nếu muốn hiệu chỉnh sửa đổi thuật toán hay sử dụng phần mở rộng của OpenCV ta cần phải biên dịch mã nguồn trực tiếp trên máy trước khi cài đặt.
@@ -24,7 +24,7 @@
 - Đọc thêm về  [OpenCV](https://opencv.org/)
 
 ---
-####2. Tổng quan về đề tài
+#### 2. Tổng quan về đề tài
 - Thị giác máy tính (Computer Vision) là một lĩnh vực bao gồm các phương pháp thu nhận, xử lý ảnh kỹ thuật số, phân tích và nhận dạng các hình ảnh và, nói chung là dữ liệu đa chiều từ thế giới thực để cho ra các thông tin số hoặc biểu tượng, ví dụ trong các dạng quyết định.
 - Việc phát triển lĩnh vực này có bối cảnh từ việc sao chép các khả năng thị giác con người bởi sự nhận diện và hiểu biết một hình ảnh mang tính điện tử. Sự nhận diện hình ảnh có thể xem là việc giải quyết vấn đề của các biểu tượng thông tin từ dữ liệu hình ảnh qua cách dùng các mô hình được xây dựng với sự giúp đỡ của các ngành lý thuyết học, thống kê, vật lý và hình học. Thị giác máy tính cũng được mô tả là sự tổng thể của một dải rộng các quá trình tự động và tích hợp và các thể hiện cho các nhận thức thị giác.
 - Nếu như bằng cặp mắt của mình, con người có thể thu nhận hình ảnh từ môi trường xung quanh, biết được màu sắc của vật, hình dáng của vật và vô số thông tin khác để có những phản ứng, hành động trong môi trường sống thì thị giác máy tính cũng vậy, chỉ có điều cặp mắt của máy tính giờ đây được thay bằng những thiết bị điện tử khác như camera, sensor hồng ngoại chẳng hạn... Bằng hệ thống cảm biến này, máy sẽ thu thập thế giới đa chiều và lưu trữ những gì thu tập được dưới dạng ảnh số. Những ảnh này sau đó được xử lý, phân tích và trích chọn ra những thông tin cần thiết giúp máy hiểu được nó đang nhìn thấy gì, cần phải làm gì...
@@ -33,13 +33,13 @@
 - Module Aruco được xây dựng dựa trên thư viện Aruco , một thư viện khá phổ biến bao gồm việc phát hiện các loại mã và các công cụ sử dụng chúng để định vị và hiệu chuẩn máy ảnh, nó được phát triển bởi Rafael Muñoz và Sergio Garrido.
 
 ---
-####3. Giới thiệu về ứng dụng tạo mã tự động
+#### 3. Giới thiệu về ứng dụng tạo mã tự động
 *UPDATING..............................................*
 ---
-####II. THUẬT TOÁN TẠO MÃ
-####1. Các điểm đánh dấu (mã) và từ điển
+#### II. THUẬT TOÁN TẠO MÃ
+#### 1. Các điểm đánh dấu (mã) và từ điển
 
-#####a. Các điểm đánh dấu
+##### a. Các điểm đánh dấu
 
 - Một điểm đánh dấu ArUco là một điểm đánh dấu tổng hợp hình vuông bao gồm một đường viền rộng màu đen và ma trận nhị phân bên trong màu trắng nhằm xác định số nhận dạng của nó (id). Các đường biên màu đen tạo điều kiện cho việc phát hiện một cách nhanh chóng hình ảnh của nó và mã hóa nhị phân cho phép định vị và áp dụng các kỹ thuật phát hiện và sửa lỗi.
 - Kích thước điểm đánh dấu xác định kích thước của ma trận nội bộ.Ví dụ: một điểm đánh dấu có khích thước là 4x4 được xây dựng bởi ma trận 16 bits.
@@ -51,7 +51,7 @@
 
 *Một điểm đánh dấu ArUco*
 
-#####b. Từ điển
+##### b. Từ điển
 
 - Từ điển của các điểm đánh dấu là một tập các điểm đánh dấu được xem xét trong một ứng dụng cụ thể. Nó chỉ đơn giản là danh sách các mã hoá nhị phân cho mỗi dấu hiệu của nó.
 - Hai thuộc tính chính của một từ điển là kích thước từ điển và kích thước điểm đánh dấu:
@@ -62,7 +62,7 @@
 - Một bộ phận có thể cho rằng id điểm đánh dấu là số thu được từ quá trình chuyển đổi mã nhị phân thành số thập phân cơ sở. Tuy nhiên, điều này là không thể khi mà kích thước điểm đánh dấu là các số bit cao và quản lý số lượng lớn như vậy là không thực tế. Thay vào đó, địa chi một điểm đánh dấu chỉ đơn giản là chỉ mục đánh dấu bên trong từ điển mà nó thuộc về. Ví dụ, 5 dấu đầu tiên trong một từ điển có id: 0, 1, 2, 3 và 4.
 
 ---
-####2. Thuật toán tạo mã
+#### 2. Thuật toán tạo mã
 
 - Trước khi nhận dạng mã, các mã cần được in ra và được đặt trong môi trường. Hình ảnh của mã có thể được tạo ra bằng cách sử dụng hàm drawMarker().
 - Ví dụ, phân tích lời gọi hàm sau:
@@ -89,8 +89,8 @@
 *Mã được tạo*
 
 ---
-####III. THUẬT TOÁN NHẬN DẠNG MÃ
-####1. Thuật toán nhận dạng mã
+#### III. THUẬT TOÁN NHẬN DẠNG MÃ
+#### 1. Thuật toán nhận dạng mã
 
 - Để nhận dạng mã cần phải xác định 2 yếu tố:
 	1. Vị trí của bốn góc của mã trong hình ảnh (theo thứ tự ban đầu của chúng)
@@ -165,7 +165,7 @@
 - Với hai chức năng này, chúng ta có thể tạo ra một vòng lặp dò tìm cơ bản để phát hiện các mã từ máy ảnh.
 
 ---
-####2. Ước lượng hình dáng
+#### 2. Ước lượng hình dáng
 - Để thực hiện ước lượng hình dáng mã, bạn cần phải biết các thông số hiệu chuẩn trên máy ảnh của bạn. Đó là ma trận máy ảnh và các hệ số biến dạng. OpenCV cung cấp chức năng calibrateCamera() và hướng dẫn Calibration để hiệu chuẩn máy ảnh. Bạn cũng có thể hiệu chuẩn máy ảnh của bạn bằng cách sử dụng module aruco. Lưu ý rằng điều này chỉ cần được thực hiện một lần trừ khi các ống kính máy ảnh được sửa đổi (ví dụ thay đổi tập trung của nó)
 - Cuối cùng, những gì bạn nhận được sau khi hiệu chuẩn là ma trận máy ảnh: một ma trận 3x3 với khoảng cách tiêu cự và tọa độ trung tâm của máy ảnh (còn gọi là các tham số nội tại) và hệ số biến dạng: một vector gồm 5 phần tử  hoặc nhiều hơn, đó là mô hình sự biến dạng được tạo ra bởi máy ảnh của bạn.
 - Khi ước lượng hình dáng tập các mã ArUco, bạn có thể ước tính hình dáng của mỗi mã riêng lẻ, bằng cách sử dụng các bảng aruco.
@@ -207,7 +207,7 @@ Máy ảnh đặt ra đối với một mã là sự chuyển đổi 3d từ h�
 [ArUco markers detection video](https://www.youtube.com/watch?v=IsXWrcB_Hvs&feature=youtu.be)
 
 ---
-####3. Chọn từ điển
+#### 3. Chọn từ điển
 
 - Module ArUco cung cấp lớp Dictionary là lớp đại diện cho từ điển của các mã.
 - Ngoài kích thước của mã và số lượng mã trong từ điển, có một tham số quan trọng nữa đó là khoảng cách giữa hai mã. Khoảng cách giữa hai mã là khoảng cách tối thiểu giữa các dấu hiệu của nó và nó sẽ xác định khả năng phát hiện và sửa chữa các lỗi của từ điển. Nói chung, kích thước từ điển và kích thước mã cao hơn làm tăng khoảng cách giữa các mã và ngược lại. Tuy nhiên, việc phát hiện các mã với kích thước lớn hơn là phức tạp hơn, do số lượng bit cao hơn cần phải được chiết xuất từ hình ảnh. Ví dụ, nếu bạn chỉ cần 10 mã trong ứng dụng của bạn, tốt hơn là sử dụng một từ điển chỉ gồm có 10 mã hơn là sử dụng một từ điển gồm có 1000 mã. Lý do là từ điển gồm 10 mã phân cách sẽ có khoảng cách giữa các điểm đánh dấu cao hơn và, do đó, nó sẽ mạnh mẽ hơn đối với các lỗi.
@@ -250,7 +250,7 @@ Máy ảnh đặt ra đối với một mã là sự chuyển đổi 3d từ h�
 		**cv::Mat markerCompressed = getByteListFromBits(markerBits);**
 
 ---
-####4. Tham số cảm biến
+#### 4. Tham số cảm biến
 
 - Một trong các tham số của detectMarkers() là đối tượng DetectorParameters . Đối tượng này bao gồm tất cả các tùy chọn có thể được tùy chỉnh trong quá trình phát hiện mã.
 - Các tham số được phân loại tùy thuộc vào quá trình mà chúng tham gia.
@@ -288,7 +288,7 @@ Máy ảnh đặt ra đối với một mã là sự chuyển đổi 3d từ h�
 - Tham số double adaptiveThreshConstant thể hiện giá trị hằng số được thêm vào trong điều kiện phân đoạn. Giá trị mặc định là một lựa chọn tốt trong hầu hết các trường hợp.
 Giá trị mặc định: 7.
 
-#####b. Lọc đường viền
+##### b. Lọc đường viền
 
 - Sau khi phân đoạn ảnh, đường viền được nhận diện. Tuy nhiên, không phải tất cả các đường viền được coi là các đối tượng mã. Chúng được lọc ra theo các bước khác nhau để các đường viền không chắc sẽ bị đánh dấu bị loại bỏ.
 - Tất cả các đường viền được xem xét và sẽ được xử lý trong các giai đoạn sau, mất chi phí tính toán cao hơn. Vì vậy, việc loại bỏ các đối tượng sai trong giai đoạn này là thích hợp hơn trong giai đoạn sau. Mặt khác, nếu các điều kiện lọc quá chặt chẽ, các đường viền  thực của mã có thể bị loại bỏ, và do đó không được phát hiện.
@@ -311,7 +311,7 @@ Giá trị mặc định: 7.
 		- Khoảng cách tối thiểu tới bất kỳ mã nào đối với đường viền hình ảnh (bằng pixel). Mã bị che khuất bởi đường viền hình ảnh có thể được phát hiện chính xác nếu tắc nghẽn là nhỏ. Tuy nhiên, nếu một góc bị che khuất, góc quay trở lại thường nằm ở vị trí sai gần đường biên của hình ảnh.
 		- Giá trị mặc định: 3.
 
-#####c. Trích xuất bits
+##### c. Trích xuất bits
 
 - Sau khi nhận dạng đối tượng, các bit của mỗi đối tượng sẽ được phân tích để xác định xem chúng có phải là mã thực sự hay không.
 Trước khi phân tích mã nhị phân chính nó, các bit cần phải được trích xuất. Để làm như vậy, sự méo mó bị loại bỏ và hình ảnh kết quả được phân đoạn sử dụng thuật toán Otsu để tách riêng các điểm ảnh màu đen và trắng.
@@ -355,7 +355,7 @@ Trước khi phân tích mã nhị phân chính nó, các bit cần phải đư�
 - Tham số perspectiveRemoveIgnoredMarginPerCell cho thấy sự khác biệt giữa các ô màu đỏ và xanh lá cây. Tham số này liên quan đến tổng kích thước của ô. Ví dụ nếu kích thước tế bào là 40 pixel và giá trị của tham số này là 0,1, một lề 40 * 0,1 = 4 pixel được bỏ qua trong các ô. Điều này có nghĩa là tổng số pixel được phân tích trên mỗi ô sẽ thực sự là 32x32, thay vì 40x40.
 - Giá trị mặc định: 0.13.
 
-#####d. Nhận diện mã
+##### d. Nhận diện mã
 - Sau khi các bit đã được trích xuất, bước tiếp theo kiểm tra nếu chiết xuất mã thuộc về từ điển đánh dấu, và nếu cần thiết, sửa lỗi có thể được thực hiện. 
 - double maxErroneousBitsInBorderRate
 	- Các bit của đường viền mã nên là màu đen. Tham số này xác định số bit cho phép trong đường biên, nghĩa là số bit trắng tối đa trong đường biên. Nó được biểu diễn tương ứng so với tổng số bit trong mã.
@@ -366,7 +366,7 @@ Trước khi phân tích mã nhị phân chính nó, các bit cần phải đư�
 	- Giá trị này rất hữu ích để giảm khả năng hiệu chỉnh lỗi để tránh sai liên tục.
 	- Giá trị mặc định: 0.6.
 
-#####e. Sàng lọc ở góc
+##### e. Sàng lọc ở góc
 - Sau khi các mã đã được phát hiện và xác định, bước cuối cùng là thực hiện sàng lọc subpixel ở các vị trí góc. Lưu ý rằng bước này là tùy chọn và chỉ có ý nghĩa nếu vị trí của mã phải chính xác. Đây là một bước tốn thời gian và nó bị vô hiệu theo mặc định.
 - bool doCornerRefinement
 	- Tham số này quyết định xem quá trình con subpixel góc được thực hiện hay không. Nó có thể bị vô hiệu nếu các góc chính xác là không cần thiết.
@@ -379,7 +379,7 @@ Trước khi phân tích mã nhị phân chính nó, các bit cần phải đư�
 	- Giá trị mặc định: cornerRefinementMaxIterations: 30, cornerRefinementMinAccuracy: 0.1.
 
 ---
-####IV. CÁCH CÀI ĐẶT VÀ SỬ DỤNG ỨNG DỤNG
+#### IV. CÁCH CÀI ĐẶT VÀ SỬ DỤNG ỨNG DỤNG
 *UPDATING..............................................*
 
 
